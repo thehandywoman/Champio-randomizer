@@ -1,0 +1,34 @@
+{
+  "fields": [
+    {
+      "id": 1,
+      "lineName": "Top",
+      "characters": ["Aatrox", "Garen", "Fiora", "Kled", "Camille", "Fiora", "Nasus", "Yoric"],
+      "backgroundImage": "bc1.png"
+    },
+    {
+      "id": 2,
+      "lineName": "Jungle",
+      "characters": ["Rammus", "Kha'Zix", "Rengar", "Rek'Sai", "Belveth", "Briar", "Amumu"],
+      "backgroundImage": "bc2.png"
+    },
+    {
+      "id": 3,
+      "lineName": "Mid",
+      "characters": ["Ahri", "Akali", "Yasuo", "Zed", "Vex", "Yone", "Malzahar"],
+      "backgroundImage": "bc3.png"
+    },
+    {
+      "id": 4,
+      "lineName": "ADC",
+      "characters": ["Ashe", "Caitlyn", "Vayne", "Nilah", "Kog'Maw", "Ezreal", "Fiora"],
+      "backgroundImage": "bc4.png"
+    },
+    {
+      "id": 5,
+      "lineName":"Support",
+      "characters": ["Leona", "Sona", "Soraka", "Alistar", "Rell", "Zyra", "Brand"],
+      "backgroundImage": "bc5.png"
+    }
+  ]
+}
