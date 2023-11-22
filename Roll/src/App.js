@@ -33,10 +33,10 @@ function App() {
 
   function toggleButton(column) {
     setSelectedButtons(prevButtons => {
-      if (prevButtons.includes(column)) {
-        return prevButtons.filter(c => c !== column);
+      if (prevButtons.includes(column.id)) {
+        return prevButtons.filter(c => c !== column.id);
       } else {
-        return [...prevButtons, column];
+        return [...prevButtons, column.id];
       }
     });
   }
@@ -44,8 +44,9 @@ function App() {
   function rollNames(columns) {
     console.log("SELECTED BUTTONS:");
     console.log(columns);
-    columns.forEach(column => {
-      const textFields = document.querySelectorAll(`.text-field[data-column="${column.id}"]`);
+    columns.forEach(columnId => {
+      const column = charactersData.find(c => c.id === columnId);
+      const textFields = document.querySelectorAll(`.text-field[data-column="${columnId}"]`);
       textFields.forEach(textField => {
         const fieldCharacters = column.characters;
         const initialIndex = Math.floor(Math.random() * fieldCharacters.length);
@@ -71,7 +72,8 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Losowanie Imion Postaci</h1>
+        <h1>Champion Randomizer</h1>
+        <h2>League of Legends</h2>
       </header>
       <div className="button-group">
         {charactersData.map(column => (
@@ -85,14 +87,23 @@ function App() {
           </button>
         ))}
       </div>
-      <div className="text-fields-container">
-        {selectedButtons.map(column => (
-            <div key={column.id} className='field-container'>
-              <input type="text" className="text-field" readOnly data-column={column.id} />
-              {createBackgroundImage(column)}
-            </div>
-        ))}
-      </div>
+     <div className="text-fields-container">
+  {selectedButtons
+    .map(columnId => {
+      const column = charactersData.find(c => c.id === columnId);
+      return {
+        id: column.id,
+        component: (
+          <div key={column.id} className='field-container'>
+            <input type="text" className="text-field" readOnly data-column={column.id} />
+            {createBackgroundImage(column)}
+          </div>
+        ),
+      };
+    })
+    .sort((a, b) => a.id - b.id)
+    .map(item => item.component)}
+</div>
       <button id="losujButton" onClick={() => rollNames(selectedButtons)}>LOSUJ</button>
     </div>
   );
